@@ -1,0 +1,203 @@
+/**
+ * admin/components/layout/AdminSidebar.module.css
+ * Premium Admin Sidebar — Deep Navy + Royal Blue
+ */
+
+/* ─── Sidebar Container ──────────────────────────────────────────────────────── */
+.sidebar {
+  display:          flex;
+  flex-direction:   column;
+  height:           100%;
+  width:            var(--admin-sidebar-width);
+  background:       var(--admin-bg-surface);
+  border-right:     1px solid var(--admin-border);
+  overflow-y:       auto;
+  overflow-x:       hidden;
+  scrollbar-width:  none; /* Firefox */
+}
+.sidebar::-webkit-scrollbar { display: none; }
+
+/* ─── Logo Area ──────────────────────────────────────────────────────────────── */
+.logo {
+  display:         flex;
+  align-items:     center;
+  gap:             12px;
+  padding:         24px 20px 20px;
+  border-bottom:   1px solid var(--admin-border);
+  text-decoration: none;
+  flex-shrink:     0;
+}
+
+.logoIcon {
+  width:           40px;
+  height:          40px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  transition:      transform var(--admin-transition);
+}
+.logo:hover .logoIcon {
+  transform:  scale(1.05);
+}
+.logoIcon img {
+  width:  32px;
+  height: auto;
+}
+
+.logoText {
+  display:        flex;
+  flex-direction: column;
+  line-height:    1;
+}
+.logoTitle {
+  font-size:      15px;
+  font-weight:    800;
+  color:          var(--admin-text-primary);
+  letter-spacing: -0.3px;
+}
+.logoSubtitle {
+  font-size:      10px;
+  font-weight:    600;
+  color:          var(--admin-accent-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top:     4px;
+}
+
+/* ─── Navigation ─────────────────────────────────────────────────────────────── */
+.nav {
+  flex:       1;
+  padding:    16px 12px;
+  display:    flex;
+  flex-direction: column;
+  gap:        2px;
+}
+
+/* ─── Section Label ──────────────────────────────────────────────────────────── */
+.sectionLabel {
+  font-size:      10px;
+  font-weight:    700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--admin-text-muted);
+  padding:        16px 12px 6px;
+  margin-top:     4px;
+}
+.sectionLabel:first-child {
+  padding-top: 4px;
+  margin-top:  0;
+}
+
+/* ─── Nav Link ───────────────────────────────────────────────────────────────── */
+.navLink {
+  display:         flex;
+  align-items:     center;
+  gap:             10px;
+  padding:         10px 12px;
+  border-radius:   var(--admin-radius-md);
+  font-size:       13.5px;
+  font-weight:     500;
+  color:           var(--admin-text-secondary);
+  text-decoration: none;
+  transition:      all var(--admin-transition-fast);
+  position:        relative;
+  white-space:     nowrap;
+}
+.navLink:hover {
+  background: rgba(0, 0, 0, 0.04);
+  color:      var(--admin-accent);
+}
+.navLink.active {
+  background: var(--admin-accent-subtle);
+  color:      var(--admin-accent-light);
+  font-weight: 600;
+}
+.navLink.active::before {
+  content:      '';
+  position:     absolute;
+  left:         0;
+  top:          20%;
+  bottom:       20%;
+  width:        3px;
+  background:   var(--admin-accent);
+  border-radius: 0 3px 3px 0;
+}
+
+.navIcon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  flex-shrink:     0;
+  width:           20px;
+  height:          20px;
+  transition:      transform var(--admin-transition-fast);
+}
+.navLink:hover .navIcon,
+.navLink.active .navIcon {
+  transform: scale(1.1);
+}
+
+.navLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Sidebar Footer (User Info) ─────────────────────────────────────────────── */
+.footer {
+  padding:       16px 12px;
+  border-top:    1px solid var(--admin-border);
+  flex-shrink:   0;
+}
+
+.userCard {
+  display:       flex;
+  align-items:   center;
+  gap:           10px;
+  padding:       10px 12px;
+  border-radius: var(--admin-radius-md);
+  background:    var(--admin-bg-elevated);
+  border:        1px solid var(--admin-border);
+  cursor:        default;
+}
+
+.userAvatar {
+  width:           36px;
+  height:          36px;
+  border-radius:   var(--admin-radius-sm);
+  background:      linear-gradient(135deg, var(--admin-accent), var(--admin-accent-light));
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  color:           #fff;
+  font-size:       13px;
+  font-weight:     700;
+  flex-shrink:     0;
+  letter-spacing:  -0.5px;
+}
+
+.userInfo {
+  flex:     1;
+  min-width: 0;
+}
+.userName {
+  font-size:      13px;
+  font-weight:    600;
+  color:          var(--admin-text-primary);
+  display:        block;
+  overflow:       hidden;
+  text-overflow:  ellipsis;
+  white-space:    nowrap;
+  text-transform: capitalize;
+}
+.userRole {
+  font-size:      10px;
+  font-weight:    600;
+  color:          var(--admin-accent-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display:        block;
+  margin-top:     2px;
+}

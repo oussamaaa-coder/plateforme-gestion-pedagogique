@@ -1,0 +1,114 @@
+/**
+ * index.css
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ISTA NTIC SYBA — Global Reset & Base
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ * PURPOSE: Minimal global styles only.
+ * - CSS reset & box-model fix
+ * - Font smoothing
+ * - Root font size
+ * - No module-specific styles here.
+ * - No Tailwind globals that could leak into modules.
+ *
+ * Module-specific styles live in:
+ *   admin/styles/theme.css     → .admin-scope
+ *   formateur/styles/theme.css → .formateur-scope
+ *   student/styles/theme.css   → .student-scope
+ *   public_face/ (untouched)
+ */
+
+/* ─── Tailwind (used only by public_face) ────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Universal Box Model ────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+/* ─── Root ───────────────────────────────────────────────────────────────────── */
+:root {
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ─── HTML & Body Base ───────────────────────────────────────────────────────── */
+html {
+  scroll-behavior:  smooth;
+  overflow-x:       hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height:   100vh;
+  overflow-x:   hidden;
+  /* No background or color set here — each module scope sets its own */
+}
+
+/* ─── Media Elements ─────────────────────────────────────────────────────────── */
+img,
+video,
+svg {
+  display:   block;
+  max-width: 100%;
+}
+
+/* ─── Form Element Resets ────────────────────────────────────────────────────── */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ─── Link Reset ─────────────────────────────────────────────────────────────── */
+a {
+  color:           inherit;
+  text-decoration: none;
+}
+
+/* ─── List Reset ─────────────────────────────────────────────────────────────── */
+ul, ol {
+  list-style: none;
+}
+
+/* ─── React Root ─────────────────────────────────────────────────────────────── */
+#root {
+  min-height: 100vh;
+  isolation:  isolate; /* Creates a new stacking context — prevents z-index bleed */
+}
+
+/* ─── Global Toast Override (react-toastify) ─────────────────────────────────── */
+.Toastify__toast {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size:   14px;
+  font-weight: 500;
+  border-radius: 12px !important;
+}
+
+/* ─── Global Animations (used by public_face) ────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes fade-up {
+  0%   { opacity: 0; transform: translateY(15px) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite linear;
+}

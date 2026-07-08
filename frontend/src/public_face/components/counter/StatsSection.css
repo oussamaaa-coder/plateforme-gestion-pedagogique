@@ -1,0 +1,137 @@
+/* ══════════════════════════════════════════════════════════
+   StatsSection.css — Carte flottante · Bande dorée en haut
+══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+.stats {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    font-family: 'Inter', system-ui, sans-serif;
+    margin-top: -60px; /* Overlap with Carousel */
+    padding: 0 40px 0px;
+    z-index: 100; /* Ensure it stays above carousel */
+}
+
+.stats__title-container {
+    display: none;
+}
+
+/* ── Carte flottante ─────────────────────────────────────── */
+.stats__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(10, 37, 64, 0.05);
+    padding: 35px 0 32px;
+
+    /* Bordure subtile au lieu de dorée */
+    border-top: 1px solid #0d2744;
+
+    /* Entrée smooth */
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stats__row--active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Item ────────────────────────────────────────────────── */
+.stats__item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 0 28px;
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stats__item:hover {
+    transform: translateY(-2px);
+}
+
+/* Séparateur vertical */
+.stats__item+.stats__item {
+    border-left: 1px solid #ebebeb;
+}
+
+/* ── Nombre ──────────────────────────────────────────────── */
+.stats__number {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1;
+    color: #1a1a1a;
+    letter-spacing: -0.03em;
+    transition: color 0.3s ease;
+}
+
+.stats__item:hover .stats__number {
+    color: #0d2744;
+}
+
+/* ── Label ───────────────────────────────────────────────── */
+.stats__label {
+    font-size: clamp(0.62rem, 0.9vw, 0.70rem);
+    font-weight: 400;
+    color: #b0b0b0;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+}
+
+/* ── Stagger ─────────────────────────────────────────────── */
+.stats__row--active .stats__item:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.stats__row--active .stats__item:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.stats__row--active .stats__item:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .stats {
+        margin-top: -24px;
+        padding: 0 16px;
+    }
+
+    .stats__row {
+        flex-direction: column;
+        padding: 20px 0;
+        border-radius: 12px;
+    }
+
+    .stats__item+.stats__item {
+        border-left: none;
+        border-top: 1px solid #0d2744;
+        padding-top: 18px;
+        margin-top: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .stats__row,
+    .stats__item {
+        transition: none !important;
+    }
+}

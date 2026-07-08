@@ -1,0 +1,166 @@
+/**
+ * src/admin/styles/layout.css
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ISTA NTIC SYBA — Admin Layout Structure
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+.admin-scope .admin-layout-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--admin-surface);
+  font-family: var(--admin-font-main);
+  color: var(--admin-text-main);
+}
+
+/* ─── Sidebar ────────────────────────────────────────────────────────────────── */
+.admin-scope .admin-sidebar-fixed {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--admin-primary);
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+/* ─── Main Content Wrapper ───────────────────────────────────────────────────── */
+.admin-scope .admin-main-wrapper {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevent flex overflow */
+}
+
+/* ─── Top Navbar ─────────────────────────────────────────────────────────────── */
+.admin-scope .admin-navbar {
+  height: var(--navbar-height);
+  background-color: white;
+  border-bottom: 1px solid var(--admin-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 900;
+}
+
+/* ─── Page Content Area ──────────────────────────────────────────────────────── */
+.admin-scope .admin-content-inner {
+  padding: 2rem;
+  flex: 1;
+}
+
+
+.admin-scope .navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.admin-scope .user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 150ms;
+}
+
+.admin-scope .user-menu:hover {
+  background-color: var(--admin-surface);
+}
+
+.admin-scope .user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.admin-scope .user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--admin-text-main);
+}
+
+.admin-scope .user-role {
+  font-size: 10px;
+  color: var(--admin-text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.admin-scope .btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 13px;
+  color: #64748B;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 150ms;
+}
+
+.admin-scope .btn-logout:hover {
+  background-color: #FEE2E2;
+  color: #EF4444;
+}
+
+@media (max-width: 1023px) {
+  .admin-scope .admin-sidebar-fixed {
+    transform: translateX(-100%);
+  }
+  .admin-scope .admin-sidebar-fixed.open {
+    transform: translateX(0);
+  }
+  .admin-scope .admin-main-wrapper {
+    margin-left: 0;
+  }
+  
+  /* Mobile Backdrop when sidebar is open */
+  .admin-scope .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Tablet / Mobile (< 768px) */
+@media (max-width: 767px) {
+  .admin-scope .admin-content-inner {
+    padding: 1.25rem;
+  }
+  
+  .admin-scope .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 479px) {
+  .admin-scope .admin-content-inner {
+    padding: 1rem;
+  }
+  
+  .admin-scope .admin-page-header {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 1rem;
+  }
+  
+  .admin-scope .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

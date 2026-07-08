@@ -1,0 +1,242 @@
+/* ============================================================
+   Fillière Section — Glassmorphism & Modern Design
+   ============================================================ */
+
+.filliere-section {
+    padding: 30px 48px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.filliere-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.filliere-header__title {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: clamp(1.8rem, 3vw, 2.2rem); /* Reduced size */
+    font-weight: 700;
+    color: var(--clr-nav, #0d2744);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.filliere-header__title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    background: #0d2744;
+    /* Dark blue accent */
+    height: 1px;
+    border-radius: 2px;
+}
+
+.filliere-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+    .filliere-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .filliere-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .filliere-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+}
+
+/* ── Filliere Card — Glass Effect ────────────────────────── */
+.filliere-card {
+    position: relative;
+    height: 320px; /* Shorter cards */
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    isolation: isolate;
+}
+
+.filliere-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(10, 37, 64, 0.25);
+    border-color: rgba(13, 39, 68, 0.4);
+}
+
+.filliere-card {
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filliere-card__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.filliere-card:hover .filliere-card__bg {
+    transform: scale(1.15);
+}
+
+.filliere-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(13, 39, 68, 0.95) 0%,
+            rgba(13, 39, 68, 0.4) 50%,
+            rgba(13, 39, 68, 0.1) 100%);
+    z-index: 0;
+    transition: opacity 0.6s ease;
+}
+
+.filliere-card:hover .filliere-card__overlay {
+    background: linear-gradient(to top,
+            rgba(13, 39, 68, 1) 0%,
+            rgba(13, 39, 68, 0.6) 60%,
+            rgba(13, 39, 68, 0.2) 100%);
+}
+
+.filliere-card__badge {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 8px 16px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filliere-card__content {
+    position: relative;
+    z-index: 2;
+    padding: 25px 20px; /* Reduced padding */
+    color: #fff;
+    transform: translateY(15px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filliere-card:hover .filliere-card__content {
+    transform: translateY(0);
+}
+
+.filliere-card__title {
+    font-family: var(--font-display);
+    font-size: 18px; /* Further reduced title */
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.25;
+    color: #fff;
+}
+
+.filliere-card__desc {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.filliere-card:hover .filliere-card__desc {
+    opacity: 1;
+    max-height: 120px;
+    margin-bottom: 24px;
+}
+
+.filliere-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    /* White or dark blue, but here white looks better on dark overlay */
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.filliere-card__cta-arrow {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 18px;
+}
+
+.filliere-card:hover .filliere-card__cta-arrow {
+    transform: translateX(8px);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .filliere-section {
+        padding: 80px 32px;
+    }
+
+    .filliere-grid {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filliere-section {
+        padding: 60px 20px;
+    }
+
+    .filliere-header {
+        margin-bottom: 40px;
+    }
+
+    .filliere-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+    }
+
+    .filliere-card {
+        height: 400px;
+    }
+
+    .filliere-card__content {
+        padding: 30px 24px;
+    }
+}

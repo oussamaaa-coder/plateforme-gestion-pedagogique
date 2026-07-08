@@ -1,0 +1,180 @@
+/**
+ * admin/components/layout/AdminHeader.module.css
+ * Premium Admin Header — Glassmorphism + Luxury Navy
+ */
+
+.header {
+  height:           var(--admin-header-height);
+  background:       rgba(255, 255, 255, 0.80);
+  backdrop-filter:  blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom:    1px solid var(--admin-border);
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  padding:          0 var(--admin-space-6);
+  position:         sticky;
+  top:              0;
+  z-index:          150;
+  transition:       all var(--admin-transition);
+}
+
+.left {
+  display:     flex;
+  align-items: center;
+  gap:         var(--admin-space-4);
+}
+
+.right {
+  display:     flex;
+  align-items: center;
+  gap:         var(--admin-space-6);
+}
+
+/* ─── Toggle Button ────────────────────────────────────────────────────────── */
+.toggleBtn {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           40px;
+  height:          40px;
+  border-radius:   var(--admin-radius-md);
+  color:           var(--admin-text-secondary);
+  background:      rgba(0, 0, 0, 0.03);
+  border:          1px solid var(--admin-border);
+  cursor:          pointer;
+  transition:      all var(--admin-transition-fast);
+}
+.toggleBtn:hover {
+  background:      rgba(255, 255, 255, 0.08);
+  color:           var(--admin-text-primary);
+  border-color:    var(--admin-border-light);
+}
+
+/* ─── Action Buttons ───────────────────────────────────────────────────────── */
+.actions {
+  display:     flex;
+  align-items: center;
+  gap:         var(--admin-space-3);
+}
+
+.iconBtn {
+  position:        relative;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           40px;
+  height:          40px;
+  border-radius:   var(--admin-radius-md);
+  color:           var(--admin-text-secondary);
+  background:      transparent;
+  border:          1px solid transparent;
+  cursor:          pointer;
+  transition:      all var(--admin-transition-fast);
+}
+.iconBtn:hover {
+  background:      rgba(255, 255, 255, 0.05);
+  color:           var(--admin-text-primary);
+  border-color:    var(--admin-border);
+}
+
+.badge {
+  position:        absolute;
+  top:             8px;
+  right:           8px;
+  min-width:       16px;
+  height:          16px;
+  padding:         0 4px;
+  background:      var(--admin-danger);
+  color:           #fff;
+  font-size:       10px;
+  font-weight:     700;
+  border-radius:   var(--admin-radius-full);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  border:          2px solid var(--admin-bg-base);
+}
+
+/* ─── User Profile ─────────────────────────────────────────────────────────── */
+.profile {
+  display:         flex;
+  align-items:     center;
+  gap:             var(--admin-space-3);
+  padding:         6px 12px;
+  border-radius:   var(--admin-radius-lg);
+  background:      rgba(0, 0, 0, 0.02);
+  border:          1px solid var(--admin-border);
+  cursor:          pointer;
+  transition:      all var(--admin-transition-fast);
+}
+.profile:hover {
+  background:      rgba(255, 255, 255, 0.06);
+  border-color:    var(--admin-border-light);
+}
+
+.avatar {
+  width:           34px;
+  height:          34px;
+  border-radius:   var(--admin-radius-sm);
+  background:      linear-gradient(135deg, var(--admin-accent), var(--admin-accent-light));
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  color:           #fff;
+  font-size:       12px;
+  font-weight:     700;
+  box-shadow:      0 4px 10px var(--admin-accent-glow);
+}
+
+.details {
+  display:         flex;
+  flex-direction:  column;
+  line-height:     1.2;
+}
+.name {
+  font-size:       13px;
+  font-weight:     600;
+  color:           var(--admin-text-primary);
+  text-transform:  capitalize;
+}
+.role {
+  font-size:       10px;
+  font-weight:     600;
+  color:           var(--admin-text-muted);
+  letter-spacing:  0.05em;
+  text-transform:  uppercase;
+}
+
+/* ─── Logout ───────────────────────────────────────────────────────────────── */
+.logoutBtn {
+  display:         flex;
+  align-items:     center;
+  gap:             var(--admin-space-2);
+  padding:         8px 14px;
+  border-radius:   var(--admin-radius-md);
+  background:      var(--admin-danger-bg);
+  border:          1px solid var(--admin-danger-border);
+  color:           var(--admin-danger);
+  font-size:       13px;
+  font-weight:     600;
+  cursor:          pointer;
+  transition:      all var(--admin-transition-fast);
+}
+.logoutBtn:hover {
+  background:      rgba(239, 68, 68, 0.18);
+  transform:       translateY(-1px);
+}
+
+/* ─── Mobile View ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .details, .logoutBtn span {
+    display: none;
+  }
+  .header {
+    padding: 0 var(--admin-space-4);
+  }
+  .right {
+    gap: var(--admin-space-3);
+  }
+}

@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class EnsureRole
+{
+    /**
+     * @param  array<int, string>  ...$roles
+     */
+    public function handle(Request $request, Closure $next, ...$roles): Response
+    {
+        $user = $request->user();
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Authentification requise.',
+                'errors' => null,
+                'code' => 401,
+            ], 401);
+        }
+
+        if (!in_array($user->role, $roles, true)) {
+            return response()->json([
+                'success' => false,
+                'message' => "Accès refusé: permissions insuffisantes.",
+                'errors' => null,
+                'code' => 403,
+            ], 403);
+        }
+
+        return $next($request);
+    }
+}
+

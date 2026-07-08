@@ -1,0 +1,266 @@
+/**
+ * src/admin/styles/theme.css
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ISTA NTIC SYBA — Admin Module Theme Variables
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap');
+
+.admin-scope {
+  /* ── Colors ──────────────────────────────────────────────────────────── */
+  --admin-primary:     #0F172A;    /* Fond sidebar */
+  --admin-accent:      #2563EB;    /* Couleur active, boutons primaires */
+  --admin-accent-soft: #EFF6FF;    /* Fond items actifs sidebar */
+  --admin-surface:     #F8FAFC;    /* Fond page content */
+  --admin-card:        #FFFFFF;    /* Fond tables, cards */
+  --admin-border:      #E2E8F0;    /* Bordures */
+  --admin-text-main:   #0F172A;    /* Texte principal */
+  --admin-text-muted:  #64748B;    /* Texte secondaire / labels */
+  --admin-text-label:  #94A3B8;    /* Labels sections sidebar */
+  
+  --admin-success:     #10B981;
+  --admin-danger:      #EF4444;
+  --admin-warning:     #F59E0B;
+  --admin-info:        #3B82F6;
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --admin-font-main:   'Inter', system-ui, -apple-system, sans-serif;
+  --admin-font-heading: 'DM Sans', sans-serif;
+
+  /* ── Spacing & Radius ────────────────────────────────────────────────────── */
+  --radius-sm:         6px;
+  --radius-md:         10px;
+  --radius-lg:         14px;
+  --radius-pill:       999px;
+
+  /* ── Shadows ─────────────────────────────────────────────────────────────── */
+  --shadow-sm:         0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:         0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:         0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* ── Layout ──────────────────────────────────────────────────────────────── */
+  --sidebar-width:     240px;
+  --navbar-height:     64px;
+
+  /* ── Legacy Compat ───────────────────────────────────────────────────────── */
+  --primary:           var(--admin-accent);
+  --navy:              var(--admin-primary);
+  --surface:           var(--admin-card);
+  --bg-main:           var(--admin-surface);
+  --border:            var(--admin-border);
+  --text-primary:      var(--admin-text-main);
+  --text-secondary:    var(--admin-text-muted);
+  /* ── Sidebar Styles ──────────────────────────────────────────────────────── */
+  --sidebar-item-padding: 10px 14px;
+  --sidebar-active-bg:   rgba(37, 99, 235, 0.15);
+  --sidebar-active-text: #60A5FA;
+
+  /* ── Shared UI Component Themes (SearchableSelect, etc.) ─────────────────── */
+  --fm-forest-700:     #FFFFFF;
+  --fm-border:         var(--admin-border);
+  --fm-text-primary:   var(--admin-text-main);
+  --fm-text-muted:     var(--admin-text-muted);
+  --fm-accent:         var(--admin-accent);
+  --fm-radius-md:      var(--radius-md);
+  
+  --st-purple-800:     #FFFFFF;
+  --st-border:         var(--admin-border);
+  --st-text-primary:   var(--admin-text-main);
+  --st-text-muted:     var(--admin-text-muted);
+  --st-accent:         var(--admin-accent);
+  --st-radius-md:      var(--radius-md);
+}
+
+/* ─── Sidebar Logo Zone ─────────────────────────────────────────────────────── */
+.admin-scope .sidebar-logo-zone {
+  height: var(--navbar-height);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 1.25rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 0.5rem;
+}
+
+.admin-scope .sidebar-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--admin-accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+}
+
+.admin-scope .sidebar-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.admin-scope .sidebar-logo-title {
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.admin-scope .sidebar-logo-subtitle {
+  color: var(--admin-text-label);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ─── Sidebar Navigation ────────────────────────────────────────────────────── */
+.admin-scope .sidebar-nav {
+  padding: 0.5rem 0.75rem;
+}
+
+.admin-scope .sidebar-section-label {
+  padding: 1.5rem 0.75rem 0.5rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--admin-text-label);
+  letter-spacing: 0.1em;
+}
+
+.admin-scope .sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: var(--sidebar-item-padding);
+  color: #94A3B8;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 150ms ease;
+  margin-bottom: 2px;
+}
+
+.admin-scope .sidebar-nav-item:hover {
+  color: white;
+  background: rgba(255,255,255,0.05);
+}
+
+.admin-scope .sidebar-nav-item.active {
+  background-color: var(--sidebar-active-bg);
+  color: var(--sidebar-active-text);
+  font-weight: 600;
+}
+
+.admin-scope .sidebar-nav-item svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ─── Sidebar User Card ──────────────────────────────────────────────────────── */
+.admin-scope .userCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  margin-top: auto;
+}
+
+/* --- Premium UI Extensions -------------------------------------------------- */
+
+.admin-scope h1.premium-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700;
+  color: #111827; /* text-gray-900 */
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.admin-scope h2.premium-section-title {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600;
+  color: #374151; /* text-gray-700 */
+  border-bottom: 1px solid #E5E7EB; /* border-gray-200 */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.admin-scope .btn-premium-primary {
+  background-color: #2563EB; /* blue-600 */
+  color: white !important;
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  font-weight: 500;
+  transition: all 0.2s;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-scope .btn-premium-primary:hover {
+  background-color: #1D4ED8; /* blue-700 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.admin-scope .btn-premium-outline {
+  background-color: white;
+  color: #374151; /* text-gray-700 */
+  border: 1px solid #D1D5DB; /* border-gray-300 */
+  border-radius: 0.5rem; /* rounded-lg */
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  font-weight: 500;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-scope .btn-premium-outline:hover {
+  background-color: #F9FAFB;
+  border-color: #9CA3AF;
+}
+
+.admin-scope .gap-4-flex {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.admin-scope .button-group-premium {
+  display: inline-flex;
+  border: 2px solid #E5E7EB;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 2px;
+  background: #F9FAFB;
+}
+
+.admin-scope .button-group-premium .btn-group-item {
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 0.375rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.admin-scope .button-group-premium .btn-group-item.active {
+  background-color: #3B82F6;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.admin-scope .button-group-premium .btn-group-item:not(.active) {
+  background: transparent;
+  color: #4B5563;
+}
+
+.admin-scope .button-group-premium .btn-group-item:not(.active):hover {
+  background: #F3F4F6;
+}

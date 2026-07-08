@@ -1,0 +1,93 @@
+/**
+ * core/components/ui/SearchableSelect.module.css
+ */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: var(--fm-text-muted, var(--st-text-muted));
+}
+
+.input {
+  width: 100%;
+  padding: 10px 40px;
+  background: var(--fm-forest-700, var(--st-purple-800));
+  border: 1px solid var(--fm-border, var(--st-border));
+  border-radius: var(--fm-radius-md, var(--st-radius-md));
+  color: var(--fm-text-primary, var(--st-text-primary));
+  font-size: 14px;
+  outline: none;
+}
+.input:focus {
+  border-color: var(--fm-accent, var(--st-accent));
+}
+
+.clearBtn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--fm-text-muted, var(--st-text-muted));
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--fm-text-muted, var(--st-text-muted));
+  text-transform: uppercase;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  background: var(--fm-forest-700, var(--st-purple-800));
+  border: 1px solid var(--fm-border, var(--st-border));
+  border-radius: var(--fm-radius-md, var(--st-radius-md));
+  color: var(--fm-text-primary, var(--st-text-primary));
+  font-size: 14px;
+  outline: none;
+}
+.select:focus {
+  border-color: var(--fm-accent, var(--st-accent));
+}
+.select option {
+  padding: 8px;
+}
+
+/* Compact Mode */
+.compact {
+  gap: 4px;
+}
+.compact .input {
+  padding: 6px 32px;
+  font-size: 13px;
+}
+.compact .searchIcon {
+  left: 10px;
+}
+.compact .clearBtn {
+  right: 10px;
+}
+.compact .select {
+  padding: 4px;
+  font-size: 13px;
+}
+.compact .select option {
+  padding: 4px;
+}

@@ -1,0 +1,50 @@
+/**
+ * student/components/layout/StudentHeader.module.css
+ */
+
+.header {
+  height: var(--st-header-height);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--st-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--st-space-6);
+  position: sticky;
+  top: 0;
+  z-index: 150;
+}
+
+.toggleBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--st-radius-md);
+  color: var(--st-text-secondary);
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid var(--st-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--st-space-6);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--st-danger-bg);
+  border: 1px solid var(--st-danger-border);
+  color: var(--st-danger);
+  border-radius: var(--st-radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}

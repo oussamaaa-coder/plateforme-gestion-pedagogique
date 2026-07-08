@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap');
+
+/* ============================================================
+   choix_compte.css — Original Brand Style (Restored)
+   ============================================================ */
+:root {
+    --clr-navy: #0d2744;
+    --clr-navy-mid: #143460;
+    --clr-accent: #00a896; 
+    --clr-accent-lt: #4fd1c5;
+    --clr-admin: #8b1a2f;
+    --clr-admin-lt: #c0394f;
+    --clr-student: #0d2744;
+    --clr-teacher: #00a896;
+    
+    --clr-text: #1a2535;
+    --clr-muted: #64748b;
+    --clr-white: #ffffff;
+    --clr-border: #e8edf4;
+    --clr-bg: #f0f2f7;
+
+    --shadow-sm: 0 2px 12px rgba(13, 39, 68, .07);
+    --shadow-md: 0 6px 24px rgba(13, 39, 68, .10);
+    --shadow-lg: 0 16px 48px rgba(13, 39, 68, .13);
+    
+    --shadow-accent: 0 8px 30px rgba(0, 168, 150, .25);
+    --shadow-admin: 0 8px 30px rgba(139, 26, 47, .25);
+    --shadow-student: 0 8px 30px rgba(13, 39, 68, .25);
+
+    --radius-sm: 8px;
+    --radius: 12px;
+    --radius-xl: 20px;
+    
+    --ease: cubic-bezier(.4, 0, .2, 1);
+    --t: 0.3s;
+
+    --font-ui: 'Inter', system-ui, sans-serif;
+    --font-head: 'Sora', 'Inter', sans-serif;
+}
+
+/* ── Page wrapper ─────────────────────────────────────── */
+.login-choice-container {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background: var(--clr-bg);
+    font-family: var(--font-ui);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Header ─── */
+.login-choice-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.login-choice-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--clr-accent);
+    font-family: var(--font-ui);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.login-choice-eyebrow::before,
+.login-choice-eyebrow::after {
+    content: '';
+    width: 22px;
+    height: 2px;
+    background: var(--clr-accent);
+    border-radius: 2px;
+}
+
+.login-choice-title {
+    font-family: var(--font-head);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    color: var(--clr-navy);
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.title-underline {
+    display: none;
+}
+
+/* ── Cards grid ───────────────────────────────────────── */
+.choice-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Single card ──────────────────────────────────────── */
+.choice-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 48px 36px;
+    background: var(--clr-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform var(--t) var(--ease),
+        box-shadow var(--t) var(--ease),
+        border-color var(--t) var(--ease);
+}
+
+/* Top accent bar */
+.choice-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--clr-border);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    transition: background-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+
+.choice-card.student::before { background: var(--clr-student); }
+.choice-card.teacher::before { background: var(--clr-teacher); }
+.choice-card.admin::before   { background: var(--clr-admin); }
+
+/* Glow layer */
+.card-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--t) var(--ease);
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, transparent 40%);
+}
+
+.choice-card.student:hover .card-glow { background: linear-gradient(180deg, rgba(13, 39, 68, 0.05) 0%, transparent 40%); }
+.choice-card.teacher:hover .card-glow { background: linear-gradient(180deg, rgba(0, 168, 150, 0.05) 0%, transparent 40%); }
+.choice-card.admin:hover   .card-glow { background: linear-gradient(180deg, rgba(139, 26, 47, 0.05) 0%, transparent 40%); }
+
+/* ── Hover states ─────────────────────────────────────── */
+.choice-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+
+.choice-card.student:hover { box-shadow: var(--shadow-lg), var(--shadow-student); }
+.choice-card.teacher:hover { box-shadow: var(--shadow-lg), var(--shadow-accent); }
+.choice-card.admin:hover   { box-shadow: var(--shadow-lg), var(--shadow-admin); }
+
+.choice-card:hover .card-glow { opacity: 1; }
+.choice-card:hover .card-arrow { transform: translateX(4px); background: var(--clr-bg); }
+
+/* ── Icon ─────────────────────────────────────────────── */
+.card-icon {
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    background: var(--clr-bg);
+    transition: transform var(--t) var(--ease), background-color var(--t) var(--ease), color var(--t) var(--ease);
+}
+
+.choice-card.student .card-icon { color: var(--clr-student); }
+.choice-card.teacher .card-icon { color: var(--clr-teacher); }
+.choice-card.admin   .card-icon { color: var(--clr-admin); }
+
+.card-icon svg { width: 32px; height: 32px; }
+
+.choice-card.student:hover .card-icon { background: var(--clr-student); color: var(--clr-white) !important; transform: scale(1.05); }
+.choice-card.teacher:hover .card-icon { background: var(--clr-teacher); color: var(--clr-white) !important; transform: scale(1.05); }
+.choice-card.admin:hover   .card-icon { background: var(--clr-admin);   color: var(--clr-white) !important; transform: scale(1.05); }
+
+/* ── Label ────────────────────────────────────────────── */
+.card-label {
+    font-family: var(--font-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--clr-navy);
+    margin-bottom: 12px;
+    transition: color var(--t) var(--ease);
+}
+
+/* ── Description ──────────────────────────────────────── */
+.card-description {
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--clr-muted);
+    margin: 0;
+    flex: 1;
+}
+
+/* ── Arrow ────────────────────────────────────────────── */
+.card-arrow {
+    margin-top: 28px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--clr-muted);
+    background: transparent;
+    border: 1px solid var(--clr-border);
+    transition: all var(--t) var(--ease);
+}
+
+.card-arrow svg { width: 18px; height: 18px; }
+
+.choice-card.student:hover .card-arrow { color: var(--clr-student); border-color: transparent; }
+.choice-card.teacher:hover .card-arrow { color: var(--clr-teacher); border-color: transparent; }
+.choice-card.admin:hover   .card-arrow { color: var(--clr-admin);   border-color: transparent; }
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 600px) {
+    .choice-cards {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+    .choice-card { padding: 36px 24px; }
+    .login-choice-header { margin-bottom: 36px; }
+}

@@ -1,0 +1,148 @@
+/* ============================================================
+   FAQ Section — Modern Accordion
+   ============================================================ */
+
+.faq-section {
+    padding: 80px 48px;
+    background: transparent;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.faq-header__title {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--clr-nav, #0d2744);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+}
+
+.faq-header__title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background: #0d2744;
+    border-radius: 2px;
+}
+
+/* ── Accordion Container ────────────────────────────────── */
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(13, 39, 68, 0.1);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.faq-item.active {
+    background: #fff;
+    border-color: #0d2744;
+    box-shadow: 0 10px 30px rgba(13, 39, 68, 0.08);
+}
+
+/* ── Accordion Question ────────────────────────────────── */
+.faq-question {
+    width: 100%;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+}
+
+.faq-question h3 {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0d2744;
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover h3 {
+    color: var(--h-accent, #3783e6);
+}
+
+.faq-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(13, 39, 68, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d2744;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.faq-item.active .faq-icon {
+    background: #0d2744;
+    color: #fff;
+    transform: rotate(180deg);
+}
+
+/* ── Accordion Answer ──────────────────────────────────── */
+.faq-answer {
+    padding: 0 30px 24px 30px;
+    color: #4b5563;
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+.faq-answer ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+}
+
+.faq-answer li {
+    margin-bottom: 5px;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .faq-section {
+        padding: 50px 20px;
+    }
+    
+    .faq-question {
+        padding: 20px;
+    }
+    
+    .faq-question h3 {
+        font-size: 1.1rem;
+    }
+    
+    .faq-answer {
+        padding: 0 20px 20px 20px;
+    }
+}

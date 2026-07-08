@@ -1,0 +1,82 @@
+/* Dark Theme Overrides for Admin Template */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-theme .header {
+    background-color: #1f1f1f;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-theme .sidebar {
+    background-color: #1f1f1f;
+    border-right: 1px solid #333;
+}
+
+body.dark-theme .sidebar .sidebar-menu > ul > li > a {
+    color: #a0a0a0;
+}
+
+body.dark-theme .sidebar .sidebar-menu > ul > li > a:hover,
+body.dark-theme .sidebar .sidebar-menu > ul > li.active > a {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+body.dark-theme .card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+}
+
+body.dark-theme .card-header {
+    background-color: #2c2c2c;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-theme .table {
+    color: #e0e0e0;
+}
+
+body.dark-theme .table > :not(caption) > * > * {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+    border-bottom-color: #333;
+}
+
+body.dark-theme .table-hover tbody tr:hover {
+    background-color: #2c2c2c;
+}
+
+body.dark-theme .form-control {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #fff;
+}
+
+body.dark-theme .form-control:focus {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme .page-header .content-page-header h5 {
+    color: #fff;
+}
+
+body.dark-theme .text-muted {
+    color: #a0a0a0 !important;
+}
+
+body.dark-theme .dropdown-menu {
+    background-color: #1f1f1f;
+    border-color: #333;
+}
+
+body.dark-theme .dropdown-item {
+    color: #e0e0e0;
+}
+
+body.dark-theme .dropdown-item:hover {
+    background-color: #2c2c2c;
+    color: #fff;
+}

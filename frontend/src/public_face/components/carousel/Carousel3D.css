@@ -1,0 +1,153 @@
+.carousel3d-section {
+    width: 100%;
+    position: relative;
+    background: #050a10; /* Deepest blue/black */
+    overflow: hidden;
+}
+
+.carousel3d-canvas-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.carousel3d-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end; /* Moved towards the bottom */
+    padding-bottom: 120px; /* Adjusting the 'down' position */
+}
+
+.carousel3d-container-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-between;
+}
+
+.carousel3d-content {
+    pointer-events: auto;
+    max-width: 600px;
+    padding: 50px;
+    background: rgba(10, 25, 47, 0.6);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    position: relative; /* Context for progress bar */
+    overflow: hidden; /* Glues the progress bar corner correctly */
+}
+
+.carousel3d-tag {
+    display: inline-block;
+    color: #07D6FF; /* Accent color restored only for small highlights if needed, or keep white */
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 12px;
+}
+/* Removed tag::before as border is more modern */
+
+.carousel3d-title {
+    font-family: var(--font-header);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.carousel3d-desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+    color: white;
+    opacity: 0.6;
+    line-height: 1.7;
+    max-width: 450px;
+}
+
+.carousel3d-nav-bottom {
+    display: flex;
+    justify-content: flex-start;
+    pointer-events: auto;
+}
+
+.carousel3d-controls {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.carousel3d-arrow {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.carousel3d-arrow:hover {
+    background: white;
+    color: #0d2744;
+}
+
+.carousel3d-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.carousel3d-dot {
+    width: 30px;
+    height: 1px;
+    background: white;
+    opacity: 0.2;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel3d-dot.active {
+    opacity: 1;
+    background: white;
+}
+
+.card-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+}
+
+.card-progress .carousel3d-progress-bar {
+    height: 100%;
+    background: #FDFEFD; /* Simple white indicator */
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .carousel3d-container-inner {
+        padding: 0 40px;
+    }
+    .carousel3d-title {
+        font-size: 2.2rem;
+    }
+}

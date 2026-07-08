@@ -1,0 +1,27 @@
+[
+    {
+        "image": "image1",
+        "titre": "Clean Up Day – 3ème édition",
+        "description": "Dans le cadre du Programme d’Innovation Entrepreneuriale, l’ISTA NTIC SYBA organisera le 17/01/2026 la 3ᵉ édition du Clean Up Day. Une action citoyenne portée par nos stagiaires et encadrants, visant à promouvoir la propreté, l’hygiène, l’engagement collectif et l’esprit d’initiative. Parce qu’innover, c’est aussi agir concrètement pour un environnement de formation propre, responsable et durable. Bravo à toutes les personnes mobilisées."
+    },
+    {
+        "image": "image2",
+        "titre": "Journée Intelligence Artificielle",
+        "description": "L’Intelligence Artificielle transforme en profondeur les métiers, les compétences et les modes de décision. C’est dans cette dynamique que l’ISTA NTIC SYBA organise une journée dédiée à l’IA, placée sous le signe de la data, des carrières, de l’innovation, du développement et de l’éthique. Date : 08 janvier 2026 à partir de 09h30. Lieu : ISTA NTIC SYBA. Intervenants : Mr Hassan EL BAHI et Mr Younes OMMANE."
+    },
+    {
+        "image": "image3",
+        "titre": "Conférence Generative AI",
+        "description": "Sous le thème « Generative AI: Humanity’s Final Invention », nous aurons le plaisir d’accueillir Mr. Abderrahman Jaize, Senior Data Scientist & Entrepreneur, pour une conférence exceptionnelle dédiée à l’intelligence artificielle générative. Date : 12 novembre 2025 à 09h30. Lieu : ISTA NTIC SYBA – Marrakech. Une opportunité unique d’explorer les impacts et les perspectives de l’IA sur notre avenir."
+    },
+    {
+        "image": "image4",
+        "titre": "Journée de don de sang",
+        "description": "Nous tenons à remercier chaleureusement les 129 stagiaires qui ont participé à la journée de don de sang organisée les 21 et 22 janvier. Grâce à votre solidarité et votre engagement, cette initiative a été un véritable succès. Rendez-vous l’année prochaine pour renouveler cet élan de générosité. Ensemble, continuons à faire la différence."
+    },
+    {
+        "image": "image5",
+        "titre": "Atelier Machine Learning",
+        "description": "L'ISTA NTIC SYBA de Marrakech est ravie d'accueillir Dr. Sara El-ATEIF, Google PhD Fellow et experte en Machine Learning, pour un atelier unique autour des bases du Machine Learning. Thème : Machine Learning Basics: What Junior Developers Should Know. Date : 14 novembre 2024 à 13:30. Lieu : ISTA NTIC SYBA, Marrakech. Une occasion précieuse pour les développeurs débutants."
+    }
+]

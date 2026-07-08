@@ -1,0 +1,106 @@
+/**
+ * src/admin/styles/sidebar.css
+ * ─────────────────────────────────────────────────────────────────────────────
+ * ISTA NTIC SYBA — Admin Sidebar Specific Styles
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+/* ─── Logo Zone ──────────────────────────────────────────────────────────────── */
+.admin-scope .sidebar-logo-zone {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.admin-scope .sidebar-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--admin-accent);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.admin-scope .sidebar-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-scope .sidebar-logo-title {
+  color: white;
+  font-family: var(--admin-font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+
+.admin-scope .sidebar-logo-subtitle {
+  color: var(--admin-text-label);
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── Navigation Groups ──────────────────────────────────────────────────────── */
+.admin-scope .sidebar-nav {
+  padding: 1rem 0.75rem;
+}
+
+.admin-scope .sidebar-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--admin-text-label);
+  text-transform: uppercase;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0 0.75rem;
+}
+
+.admin-scope .sidebar-section-label:first-child {
+  margin-top: 0.5rem;
+}
+
+/* ─── Nav Items ──────────────────────────────────────────────────────────────── */
+.admin-scope .sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  color: var(--admin-text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: all 150ms ease;
+  margin-bottom: 2px;
+}
+
+.admin-scope .sidebar-nav-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+}
+
+.admin-scope .sidebar-nav-item.active {
+  background: var(--admin-accent-soft);
+  color: var(--admin-accent);
+  font-weight: 600;
+  border-left: 3px solid var(--admin-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  margin-left: -0.75rem; /* Compensate for sidebar padding for the border effect */
+  padding-left: calc(12px + 0.75rem - 3px);
+}
+
+.admin-scope .sidebar-nav-item svg {
+  width: 18px;
+  height: 18px;
+  color: inherit;
+}

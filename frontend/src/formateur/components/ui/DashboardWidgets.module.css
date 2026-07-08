@@ -1,0 +1,200 @@
+/**
+ * formateur/components/ui/DashboardWidgets.module.css
+ */
+
+.card {
+  composes: fm-card from global;
+  padding: var(--fm-space-8);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--fm-space-10);
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: var(--fm-space-4);
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--fm-radius-md);
+  background: var(--fm-accent-subtle);
+  color: var(--fm-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--fm-transition);
+}
+.card:hover .iconBox {
+  transform: scale(1.1);
+}
+
+.titleLabel {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--fm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.subtitleLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--fm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 2px;
+}
+
+/* ─── List Items ───────────────────────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fm-space-4);
+  flex: 1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--fm-space-4);
+  padding: 16px;
+  background: var(--fm-forest-700);
+  border: 1px solid var(--fm-border);
+  border-radius: var(--fm-radius-xl);
+  transition: all var(--fm-transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+.item:hover {
+  background: var(--fm-bg-elevated);
+  border-color: var(--fm-accent-light);
+}
+
+.itemIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--fm-radius-md);
+  background: var(--fm-bg-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fm-accent-light);
+}
+
+.itemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemName {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--fm-text-primary);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.metaText {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--fm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.itemAction {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--fm-radius-sm);
+  background: var(--fm-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all var(--fm-transition-fast);
+}
+.item:hover .itemAction {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Empty State ──────────────────────────────────────────────────────────── */
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  border: 2px dashed var(--fm-border);
+  border-radius: var(--fm-radius-2xl);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.emptyIcon {
+  color: var(--fm-forest-600);
+  margin-bottom: 12px;
+}
+
+.emptyText {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--fm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────────────── */
+.footer {
+  margin-top: var(--fm-space-8);
+  padding-top: var(--fm-space-8);
+  border-top: 1px solid var(--fm-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerCount {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--fm-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footerLink {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--fm-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--fm-transition-fast);
+}
+.footerLink:hover {
+  color: var(--fm-accent-light);
+}

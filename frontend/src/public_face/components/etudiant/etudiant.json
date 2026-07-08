@@ -1,0 +1,51 @@
+[
+    {
+        "image": "image4_boy",
+        "nom_competence": "Ahmed Alami",
+        "metier": "Développeur Full Stack",
+        "laureat": "lauréat 2024",
+        "quote": "Wah, ISTA NTIC SYBA c'est vraiment cool ! Au début j'avais un peu peur parce que je connaissais rien en programmation, mais les profs sont super sympas et ils expliquent bien. Maintenant je sais faire des sites web avec HTML, CSS, JavaScript et même React !"
+    },
+    {
+        "image": "image1_girl",
+        "nom_competence": "Sara Benali",
+        "metier": "Développement Digital",
+        "laureat": "lauréate 2023",
+        "quote": "Franchement, j’ai beaucoup appris ici ! La formation en développement digital m’a permis de comprendre comment créer des projets concrets et travailler en équipe. Aujourd’hui je me sens prête pour le marché du travail."
+    },
+    {
+        "image": "image5_boy",
+        "nom_competence": "Yassine El Fassi",
+        "metier": "Applications Mobiles",
+        "laureat": "lauréat 2024",
+        "quote": "Ce que j’aime le plus, c’est qu’on pratique beaucoup. J’ai pu créer mes propres applications Android et comprendre comment fonctionne une app de A à Z. C’est une expérience vraiment enrichissante."
+    },
+    {
+        "image": "image2_girl",
+        "nom_competence": "Imane Zahraoui",
+        "metier": "Infrastructure Digitale",
+        "laureat": "lauréate 2022",
+        "quote": "Au début c’était difficile, mais avec le temps j’ai compris les bases des réseaux et des systèmes. Les formateurs sont toujours disponibles pour aider, et ça fait toute la différence."
+    },
+    {
+        "image": "image6_boy",
+        "nom_competence": "Hamza Rami",
+        "metier": "Cloud Computing",
+        "laureat": "lauréat 2023",
+        "quote": "La formation cloud est vraiment à jour avec les technologies actuelles. On apprend à utiliser des outils modernes et à déployer des applications en ligne, ce qui est très demandé aujourd’hui."
+    },
+    {
+        "image": "image3_girl",
+        "nom_competence": "Nour El Houda",
+        "metier": "Cyber Sécurité",
+        "laureat": "lauréate 2024",
+        "quote": "J’ai choisi la cybersécurité parce que ça me passionne. Ici, j’ai appris à protéger des systèmes et comprendre les attaques informatiques. C’est un domaine très intéressant et motivant."
+    },
+    {
+        "image": "image7_boy",
+        "nom_competence": "Omar Bennis",
+        "metier": "Systèmes et Réseaux",
+        "laureat": "lauréat 2022",
+        "quote": "Grâce à cette formation, j’ai acquis des compétences solides en réseaux et administration systèmes. Aujourd’hui, je peux configurer des serveurs et gérer des infrastructures."
+    }
+]

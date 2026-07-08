@@ -1,0 +1,124 @@
+/**
+ * student/components/layout/StudentSidebar.module.css
+ */
+
+.sidebar {
+  display:          flex;
+  flex-direction:   column;
+  height:           100%;
+  width:            var(--st-sidebar-width);
+  background:       var(--st-bg-surface);
+  border-right:     1px solid var(--st-border);
+}
+
+.logo {
+  display:         flex;
+  align-items:     center;
+  gap:             12px;
+  padding:         24px 20px;
+  border-bottom:   1px solid var(--st-border);
+  text-decoration: none;
+}
+
+.logoIcon {
+  width:           40px;
+  height:          40px;
+  border-radius:   var(--st-radius-md);
+  background:      var(--st-accent);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  box-shadow:      0 4px 12px var(--st-accent-glow);
+}
+.logoIcon img {
+  width:  24px;
+  filter: brightness(0) invert(1);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+}
+.logoTitle {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--st-text-primary);
+}
+.logoSubtitle {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--st-accent-light);
+  text-transform: uppercase;
+}
+
+.nav {
+  flex: 1;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--st-radius-md);
+  color: var(--st-text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all var(--st-transition-fast);
+}
+.navLink:hover {
+  background: rgba(99, 102, 241, 0.05);
+  color: var(--st-text-primary);
+}
+.navLink.active {
+  background: var(--st-accent-subtle);
+  color: var(--st-accent-light);
+  font-weight: 600;
+}
+
+.footer {
+  padding: 16px 12px;
+  border-top: 1px solid var(--st-border);
+}
+
+.userCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--fm-radius-md);
+  border: 1px solid var(--st-border);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--st-radius-sm);
+  background: var(--st-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+.name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--st-text-primary);
+}
+.role {
+  font-size: 10px;
+  color: var(--st-accent-light);
+  text-transform: uppercase;
+}

@@ -1,0 +1,214 @@
+/* ============================================================
+   admin-dashboard.css — Modern Premium Dashboard Styles
+   Synchronized with Dashboard.css design system.
+   ============================================================ */
+
+.dashboard-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 32px;
+}
+
+.page-title {
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+}
+
+.breadcrumb-item a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb-item.active {
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+/* --- Stats Grid --- */
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: var(--surface);
+    border-radius: var(--r-xl);
+    padding: 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-glow);
+}
+
+.stat-icon-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--r-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-main);
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.stat-card:hover .stat-icon-wrap {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.stat-info .stat-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+.stat-info .stat-value {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+}
+
+.stat-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    padding-top: 16px;
+    border-top: 1px solid var(--bg-main);
+}
+
+/* Color Accents (Using modern subtle borders) */
+.stat-card.blue { border-top: 4px solid var(--primary); }
+.stat-card.purple { border-top: 4px solid #8b5cf6; }
+.stat-card.orange { border-top: 4px solid var(--warning); }
+.stat-card.green { border-top: 4px solid var(--teal); }
+
+/* --- Premium Cards --- */
+.premium-card {
+    background: var(--surface);
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.premium-card .card-header {
+    padding: 24px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.premium-card .card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 0;
+}
+
+.dashboard-content-main {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 24px;
+}
+
+@media (max-width: 1200px) {
+    .dashboard-content-main {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Premium Tables --- */
+.premium-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.premium-table th {
+    text-align: left;
+    padding: 14px 24px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--bg-main);
+}
+
+.premium-table td {
+    padding: 16px 24px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--bg-main);
+    transition: var(--transition);
+}
+
+.premium-table tr:hover td {
+    background: var(--surface-hover);
+}
+
+.premium-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Activity Badges --- */
+.activity-badge {
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.activity-badge.publiee { background: var(--success-bg); color: var(--success); }
+.activity-badge.brouillon { background: var(--warning-bg); color: var(--warning); }
+
+/* Custom Badge variant for absences */
+.badge.bg-success-light { background: var(--success-bg); color: var(--success); border: 1px solid rgba(16,185,129,0.1) !important; }
+.badge.bg-danger-light { background: var(--danger-bg); color: var(--danger); border: 1px solid rgba(239,68,68,0.1) !important; }
+
+/* --- Filiere List --- */
+.filiere-item {
+    transition: var(--transition);
+    border-left: 4px solid var(--border) !important;
+}
+
+.filiere-item:hover {
+    transform: translateX(4px);
+    border-left-color: var(--primary) !important;
+    background: var(--surface-hover) !important;
+}

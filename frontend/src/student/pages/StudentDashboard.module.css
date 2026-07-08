@@ -1,0 +1,69 @@
+/**
+ * student/pages/StudentDashboard.module.css
+ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--st-space-6);
+}
+
+.hero { grid-column: span 12; }
+.statItem { grid-column: span 3; }
+
+.mainGrid {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: var(--st-space-8);
+  margin-top: var(--st-space-4);
+}
+
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-10);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--st-space-4);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.indicator {
+  width: 4px;
+  height: 24px;
+  background: var(--st-accent);
+  border-radius: var(--st-radius-full);
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--st-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.widgetsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--st-space-6);
+}
+
+@media (max-width: 1200px) {
+  .statItem { grid-column: span 6; }
+  .mainGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .statItem { grid-column: span 12; }
+  .widgetsRow { grid-template-columns: 1fr; }
+}

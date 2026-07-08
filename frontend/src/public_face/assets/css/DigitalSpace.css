@@ -1,0 +1,145 @@
+/* ============================================================
+   Digital Space Section (CTA Banner)
+   ============================================================ */
+
+.digital-space-section {
+    padding: 60px 48px;
+    background: linear-gradient(135deg, #0d2744 0%, #1a3a5f 100%);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    margin: 40px 0;
+}
+
+/* Background Curve decoration */
+.digital-space-shape {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    z-index: 1;
+}
+
+.digital-space-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.digital-space-content {
+    flex: 1;
+}
+
+.digital-space-title {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.digital-space-description {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+/* ── Buttons ─────────────────────────────────────────── */
+.digital-space-actions {
+    display: flex;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.digital-btn {
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+
+}
+
+.digital-btn--primary {
+    background: #fff;
+    color: #0d2744;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.digital-btn--primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: #f8fafc;
+    color: #0d2744 !important;
+}
+
+.digital-btn--outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.digital-btn--outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    transform: translateY(-3px);
+    color: #fff !important;
+}
+
+.digital-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .digital-space-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .digital-space-description {
+        margin: 0 auto 30px;
+    }
+
+    .digital-space-actions {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .digital-space-section {
+        padding: 40px 24px;
+    }
+
+    .digital-space-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .digital-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

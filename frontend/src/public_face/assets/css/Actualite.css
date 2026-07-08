@@ -1,0 +1,303 @@
+/* ============================================================
+   Actualités Section — Light Theme & Modern Slider
+   ============================================================ */
+
+.actualite-section {
+    padding: 30px 48px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.actualite-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.actualite-header__title {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--clr-nav, #0d2744);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.actualite-header__title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    background: #0d2744;
+    height: 1px;
+    border-radius: 2px;
+}
+
+/* ── Slider Container ──────────────────────────────────── */
+.actualite-slider-viewport {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 10px 40px;
+}
+
+.actualite-slider-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── News Card ─────────────────────────────────────────── */
+.actualite-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 530px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+}
+
+.actualite-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(13, 39, 68, 0.12);
+    border-color: rgba(13, 39, 68, 0.1);
+}
+
+.actualite-image-box {
+    width: 100%;
+    height: 300px; 
+    overflow: hidden;
+    position: relative;
+}
+
+.actualite-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.actualite-card:hover .actualite-image-box img {
+    transform: scale(1.1);
+}
+
+.actualite-content-box {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.actualite-card-title {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: #0d2744;
+    margin-bottom: 12px;
+    line-height: 1.25;
+}
+
+.actualite-card-excerpt {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.actualite-read-more {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1.5px solid #0d2744;
+    color: #0d2744;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actualite-read-more:hover {
+    background: #0d2744;
+    color: #fff !important;
+    transform: translateX(5px) translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 39, 68, 0.2);
+}
+
+/* ── Navigation ─────────────────────────────────────────── */
+.actualite-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.actualite-ctrl-btn {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #0d2744;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.actualite-ctrl-btn:hover:not(:disabled) {
+    background: #0d2744;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(13, 39, 68, 0.2);
+}
+
+.actualite-ctrl-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.actualite-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.actualite-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #dde1e7;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.actualite-dot.active {
+    background: #0d2744;
+    width: 25px;
+    border-radius: 10px;
+}
+
+/* ── Modal Design ──────────────────────────────────────── */
+.actualite-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 39, 68, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.actualite-modal-card {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 700px; /* Smaller as requested */
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.actualite-modal-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.actualite-modal-body {
+    padding: 35px;
+    color: #333;
+}
+
+.actualite-modal-title {
+    font-family: var(--font-display, 'Rajdhani', sans-serif);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0d2744;
+    line-height: 1.2;
+}
+
+.actualite-modal-text {
+    font-family: var(--font-body, 'Inter', sans-serif);
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.actualite-close-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background: #0d2744;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.actualite-close-btn:hover {
+    background: #091a2d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(13, 39, 68, 0.3);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .actualite-section {
+        padding: 60px 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .actualite-section {
+        padding: 40px 20px;
+    }
+    .actualite-modal-card {
+        max-width: 95%;
+    }
+    .actualite-modal-image {
+        height: 220px;
+    }
+    .actualite-modal-body {
+        padding: 25px;
+    }
+}

@@ -1,0 +1,748 @@
+/* ══════════════════════════════════════════════════════════
+   Carousel.css — Université Lumière · Design premium
+   Importé dans Carousel.jsx
+══════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@200;300;400;500&display=swap');
+
+/* ── Design Tokens ───────────────────────────────────────── */
+:root {
+    --c-accent: #0d2744;
+    --c-accent-lt: rgba(13, 39, 68, 0.6);
+    --c-accent-glow: rgba(13, 39, 68, 0.1);
+    --c-white: #ffffff;
+    --c-glass: rgba(10, 25, 47, 0.45);
+    --c-glass-border: rgba(255, 255, 255, 0.12);
+
+    --shadow-accent: 0 6px 22px rgba(13, 39, 68, 0.12);
+    --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --t-fast: 0.18s;
+    --t: 0.28s;
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    --radius-pill: 100px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CAROUSEL — conteneur principal
+══════════════════════════════════════════════════════════ */
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    outline: none;
+    background: rgba(10, 25, 47, 0.45);
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-deep);
+    user-select: none;
+}
+
+.carousel--inline {
+    min-height: 320px;
+}
+
+.carousel--fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100% !important;
+    z-index: 0;
+    border-radius: 0;
+}
+
+.carousel:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--c-accent), var(--shadow-deep);
+}
+
+/* ── Barre de progression ─────────────────────────────── */
+.carousel__progress-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    z-index: 60;
+}
+
+.carousel__progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,
+            var(--c-accent) 0%,
+            var(--c-accent-lt) 60%,
+            #fff 100%);
+    border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+    box-shadow: 0 0 8px var(--c-accent-glow), 0 0 3px rgba(255, 255, 255, 0.3);
+    will-change: width;
+    transition: none;
+}
+
+/* ── Top bar (brand + counter) ───────────────────────── */
+.carousel__topbar {
+    position: absolute;
+    top: 18px;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 22px;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.carousel__brand {
+    font-family: var(--font-display);
+    font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.88);
+    padding: 5px 16px;
+    background: var(--c-glass);
+    border: 1px solid var(--c-glass-border);
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    /* ↓ était 0 1px 8px / 0.4 */
+    white-space: nowrap;
+}
+
+.carousel__brand em {
+    font-style: italic;
+    color: var(--c-accent-lt);
+    text-transform: none;
+    letter-spacing: 0.04em;
+}
+
+.carousel__counter {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.52);
+    padding: 4px 12px;
+    background: var(--c-glass);
+    border: 1px solid var(--c-glass-border);
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.carousel__counter-sep {
+    opacity: 0.28;
+    font-weight: 200;
+}
+
+/* ── Slides ──────────────────────────────────────────── */
+.carousel__slides {
+    position: absolute;
+    inset: 0;
+}
+
+.carousel__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    transition:
+        opacity 0.95s var(--ease),
+        transform 0.95s var(--ease);
+    will-change: opacity, transform;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.carousel__slide.is-active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.carousel__slide.is-leaving {
+    opacity: 0;
+    transform: scale(0.97);
+    z-index: 9;
+    transition:
+        opacity 0.80s var(--ease),
+        transform 0.80s var(--ease);
+}
+
+/* ── Image + overlay ────────────────────────────────── */
+.carousel__img-wrap {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.carousel__img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transform: scale(1);
+    transition: transform 8s linear;
+    filter: brightness(0.88) saturate(1.05);
+    /* ↑ brightness de 0.82→0.88, ↓ saturate */
+}
+
+.carousel__slide.is-active .carousel__img-wrap img {
+    transform: scale(1.07);
+}
+
+/* ── Overlays adoucis ───────────────────────────────── */
+/* Overlay latéral gauche : moins opaque, moins étendu */
+.carousel__img-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        /* Fondu gauche pour la lisibilité du texte — Navy profond */
+        linear-gradient(100deg,
+            rgba(10, 25, 47, 0.82) 0%,
+            rgba(10, 25, 47, 0.45) 38%,
+            rgba(10, 25, 47, 0.05) 62%,
+            transparent 100%),
+        /* Fondu bas */
+        linear-gradient(to top,
+            rgba(10, 25, 47, 0.45) 0%,
+            rgba(10, 25, 47, 0.12) 28%,
+            transparent 48%);
+}
+
+/* ── Caption (gauche) ────────────────────────────────── */
+.carousel__caption {
+    position: absolute;
+    top: 50%;
+    left: 72px;
+    right: auto;
+    max-width: 500px;
+    padding: 0 1.5rem;
+    transform: translateY(-50%) translateX(-22px);
+    z-index: 20;
+    opacity: 0;
+    transition:
+        opacity 0.70s var(--ease) 0.22s,
+        transform 0.70s var(--ease) 0.22s;
+}
+
+.carousel__slide.is-active .carousel__caption {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+/* Ligne décorative animée */
+.carousel__caption::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--c-accent), var(--c-accent-lt));
+    margin-bottom: 14px;
+    border-radius: 2px;
+    box-shadow: 0 0 6px var(--c-accent-glow);
+    /* ↓ était 0 0 8px */
+    transition: width 0.55s var(--ease) 0.52s;
+}
+
+.carousel__slide.is-active .carousel__caption::before {
+    width: 52px;
+}
+
+/* Tag / eyebrow */
+.carousel__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    background: rgba(13, 39, 68, 0.1);
+    border: 1px solid rgba(13, 39, 68, 0.2);
+    border-radius: var(--radius-pill);
+    padding: 0.26em 0.9em;
+    margin-bottom: 0.8rem;
+    backdrop-filter: blur(10px);
+    color: var(--clr-text, #1c2b3a);
+}
+
+.carousel__tag::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--c-accent-lt);
+    box-shadow: 0 0 5px var(--c-accent-lt);
+    /* ↓ était 0 0 6px */
+    flex-shrink: 0;
+}
+
+/* Titre */
+.carousel__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2.1rem, 4vw, 3.6rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--c-white);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+    /* ↓ était 0 4px 32px / 0.5 */
+    margin-bottom: 0.7rem;
+}
+
+.carousel__title br {
+    display: block;
+}
+
+.carousel__title em {
+    font-style: italic;
+    color: var(--c-accent-lt);
+    font-weight: 300;
+}
+
+/* Description */
+.carousel__desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.82;
+    max-width: 44ch;
+    margin-bottom: 0;
+}
+
+/* CTA button */
+.carousel__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.4rem;
+    padding: 0.58em 1.5em;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--c-accent);
+    color: var(--c-accent-lt);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+    transition:
+        background var(--t) var(--ease),
+        color var(--t) var(--ease),
+        box-shadow var(--t) var(--ease),
+        transform var(--t) var(--ease-spring);
+}
+
+.carousel__cta svg {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--t) var(--ease);
+}
+
+.carousel__cta:hover {
+    background: var(--c-accent);
+    color: #fff;
+    box-shadow: 0 4px 20px var(--c-accent-glow);
+    /* ↓ était 0 6px 28px */
+    transform: translateY(-2px);
+}
+
+.carousel__cta:hover svg {
+    transform: translateX(3px);
+}
+
+/* Stats strip */
+.carousel__stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 1.8rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+        opacity 0.6s var(--ease) 0.55s,
+        transform 0.6s var(--ease) 0.55s;
+}
+
+.carousel__slide.is-active .carousel__stats {
+    opacity: 1;
+    transform: none;
+}
+
+.carousel__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.carousel__stat-num {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--c-accent-lt);
+    line-height: 1;
+}
+
+.carousel__stat-lbl {
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.36);
+    font-weight: 400;
+}
+
+/* ── Carte accent (droite) ───────────────────────────── */
+.carousel__accent {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%) scale(0.88) translateX(24px);
+    width: 240px;
+    opacity: 0;
+    transition:
+        opacity 0.8s var(--ease) 0.35s,
+        transform 0.8s var(--ease) 0.35s;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.carousel__slide.is-active .carousel__accent {
+    opacity: 1;
+    transform: translateY(-50%) scale(1) translateX(0);
+}
+
+.carousel__accent-card {
+    background: var(--c-glass);
+    border: 1px solid var(--c-glass-border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.carousel__accent-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+    margin-bottom: 10px;
+}
+
+.carousel__accent-value {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.carousel__accent-sub {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.48);
+    line-height: 1.55;
+    margin-bottom: 2px;
+}
+
+.carousel__accent-bars {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.carousel__accent-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.carousel__accent-bar-label {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.42);
+    min-width: 60px;
+    font-family: var(--font-body);
+}
+
+.carousel__accent-bar-track {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.carousel__accent-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--c-accent), var(--c-accent-lt));
+    width: 0%;
+    transition: width 1s var(--ease);
+}
+
+/* ── Boutons de navigation ───────────────────────────── */
+.carousel__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--c-glass-border);
+    background: var(--c-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--c-white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background var(--t) var(--ease),
+        border-color var(--t) var(--ease),
+        transform var(--t) var(--ease-spring),
+        box-shadow var(--t) var(--ease);
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* ↓ était 0 2px 16px / 0.3 */
+}
+
+.carousel__nav svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--t-fast) var(--ease);
+}
+
+.carousel__nav--prev {
+    left: 20px;
+}
+
+.carousel__nav--next {
+    right: 20px;
+}
+
+.carousel__nav:hover {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+    box-shadow: var(--shadow-accent);
+    transform: translateY(-50%) scale(1.12);
+}
+
+.carousel__nav--prev:hover svg {
+    transform: translateX(-2px);
+}
+
+.carousel__nav--next:hover svg {
+    transform: translateX(2px);
+}
+
+.carousel__nav:active {
+    transform: translateY(-50%) scale(0.93);
+    transition-duration: var(--t-fast);
+}
+
+.carousel__nav:focus-visible {
+    outline: 2px solid var(--c-accent-lt);
+    outline-offset: 3px;
+}
+
+/* ── Indicateurs (dots) ─────────────────────────────── */
+.carousel__dots {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 0;
+    background: none;
+    border: none;
+    backdrop-filter: none;
+}
+
+.carousel__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition:
+        background var(--t) var(--ease),
+        border-color var(--t) var(--ease),
+        width var(--t) var(--ease-spring),
+        transform var(--t-fast) var(--ease),
+        box-shadow var(--t) var(--ease);
+    outline: none;
+}
+
+.carousel__dot--active {
+    width: 26px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, var(--c-accent), var(--c-accent-lt));
+    border-color: transparent;
+    box-shadow: 0 0 8px var(--c-accent-glow);
+}
+
+.carousel__dot:hover:not(.carousel__dot--active) {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.3);
+}
+
+.carousel__dot:focus-visible {
+    outline: 2px solid var(--c-accent-lt);
+    outline-offset: 3px;
+}
+
+/* ── Vignette cinéma — plus subtile ─────────────────── */
+.carousel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.14);
+    /* ↓ était inset 0 0 90px / 0.28 */
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+    .carousel__accent {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel--inline {
+        min-height: 260px;
+    }
+
+    .carousel__caption {
+        left: 52px;
+        max-width: calc(100% - 70px);
+        padding: 0 0.75rem;
+    }
+
+    .carousel__desc {
+        display: none;
+    }
+
+    .carousel__stats {
+        gap: 18px;
+    }
+
+    .carousel__stat-num {
+        font-size: 1.15rem;
+    }
+
+    .carousel__nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel__nav svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .carousel__nav--prev {
+        left: 10px;
+    }
+
+    .carousel__nav--next {
+        right: 10px;
+    }
+
+    .carousel__topbar {
+        top: 14px;
+        padding: 0 14px;
+    }
+
+    .carousel__brand {
+        font-size: 0.74rem;
+        padding: 4px 12px;
+    }
+
+    .carousel__dots {
+        bottom: 14px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel__title {
+        font-size: 1.4rem;
+    }
+
+    .carousel__caption {
+        left: 40px;
+        max-width: calc(100% - 56px);
+    }
+
+    .carousel__caption::before {
+        display: none;
+    }
+
+    .carousel__tag {
+        font-size: 0.58rem;
+        padding: 0.22em 0.7em;
+    }
+
+    .carousel__stats {
+        display: none;
+    }
+
+    .carousel__cta {
+        font-size: 0.7rem;
+        padding: 0.5em 1.1em;
+    }
+}
+
+/* ── Réduction de mouvement ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+    .carousel__slide,
+    .carousel__caption,
+    .carousel__caption::before,
+    .carousel__img-wrap img,
+    .carousel__nav,
+    .carousel__dot,
+    .carousel__stats,
+    .carousel__accent,
+    .carousel__accent-bar-fill,
+    .carousel__cta {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+    .carousel__slide.is-active .carousel__img-wrap img {
+        transform: scale(1);
+    }
+}

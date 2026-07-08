@@ -1,0 +1,363 @@
+/* ============================================================
+   GlobalHarmony.css — Shared Styles & Utilities
+   ============================================================ */
+
+:root {
+    --h-accent: #3783e6;
+    --h-accent-glow: rgba(55, 131, 230, 0.4);
+    --h-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --h-shadow: 0 5px 15px rgba(13, 39, 68, 0.1);
+    --h-shadow-hover: 0 8px 25px rgba(55, 131, 230, 0.25);
+}
+
+/* --- Shared Hover Utilities --- */
+
+/* Standard Button Hover */
+.h-btn, .btn-primary, .btn-submit {
+    transition: var(--h-transition) !important;
+}
+
+.h-btn:hover, .btn-primary:hover, .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--h-shadow-hover);
+    filter: brightness(1.1);
+    color: #ffffff !important;
+}
+
+/* Link Hover - Smooth accent color */
+.h-link {
+    transition: var(--h-transition);
+    position: relative;
+    text-decoration: none;
+}
+
+.h-link:hover {
+    color: var(--h-accent) !important;
+}
+
+/* Animated Underline Link */
+.h-link-underline {
+    position: relative;
+    text-decoration: none;
+    transition: var(--h-transition);
+}
+
+.h-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--h-accent);
+    transition: var(--h-transition);
+}
+
+.h-link-underline:hover::after {
+    width: 100%;
+}
+
+.h-link-underline:hover {
+    color: var(--h-accent) !important;
+}
+
+/* Image Zoom on Hover */
+.h-img-zoom-wrap {
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.h-img-zoom {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.h-img-zoom-wrap:hover .h-img-zoom {
+    transform: scale(1.08);
+}
+
+/* --- Layout Responsiveness Utilities --- */
+
+.h-content-grid {
+    display: grid;
+    gap: 32px;
+    align-items: start;
+}
+
+/* Standard 3-column Grid (Sidebar-Main-Sidebar) */
+@media (min-width: 1201px) {
+    .h-grid-3 {
+        grid-template-columns: var(--sidebar-left-w, 280px) 1fr var(--sidebar-right-w, 320px);
+    }
+}
+
+/* 2-column Grid (Sidebar-Main) */
+@media (max-width: 1200px) and (min-width: 901px) {
+    .h-grid-3 {
+        grid-template-columns: var(--sidebar-left-w, 260px) 1fr;
+    }
+    .h-sidebar-right-hide {
+        display: none !important;
+    }
+}
+
+/* 1-column Stack (Mobile/Tablet) */
+@media (max-width: 900px) {
+    .h-grid-3 {
+        grid-template-columns: 1fr;
+    }
+    .h-sidebar-hide-mobile {
+        display: none !important;
+    }
+    
+    .h-container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
+/* Global fluidity fixes */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+/* Utility to ensure white text on interactive elements */
+.text-white-hover:hover {
+    color: #ffffff !important;
+}
+
+/* ============================================================
+   Sidebar Menu Harmony — Unified Professional Style
+   ============================================================ */
+
+.h-sidebar-sticky {
+    position: sticky;
+    top: 151px; /* Navbar (101px) + Breadcrumb (~50px) */
+    height: fit-content;
+    z-index: 10;
+}
+
+.h-sidebar-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e8edf4;
+    box-shadow: 0 2px 12px rgba(13, 39, 68, 0.07);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.h-sidebar-card:hover {
+    box-shadow: 0 5px 20px rgba(13, 39, 68, 0.12);
+}
+
+.h-sidebar-title {
+    background: #0d2744;
+    color: #ffffff;
+    padding: 18px 20px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    border-bottom: 3px solid #00a896;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.h-sidebar-title::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #00a896;
+    border-radius: 2px;
+}
+
+.h-sidebar-list {
+    list-style: none;
+    padding: 12px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.h-sidebar-item {
+    list-style: none;
+}
+
+.h-sidebar-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 16px;
+    text-decoration: none;
+    color: #64748b;
+    font-size: 0.86rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.h-sidebar-item a:hover {
+    color: #ffffff !important;
+    background: #00a896;
+    transform: translateX(6px);
+    box-shadow: 0 4px 12px rgba(0, 168, 150, 0.25);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.h-sidebar-item.active a {
+    background: #00a896;
+    color: #ffffff !important;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 168, 150, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Arrow indicator for active state */
+.h-sidebar-active-arrow {
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-left: 8px;
+    font-weight: 400;
+}
+
+/* Responsive Hide (Standard for Mobile) */
+@media (max-width: 991px) {
+    .h-sidebar-sticky {
+        display: none !important;
+    }
+}
+
+/* ============================================================
+   Hero Section Harmony — Unified Presence
+   ============================================================ */
+
+.h-hero-section {
+    background: #ffffff;
+    border-bottom: 1px solid #e8edf4;
+    padding: 32px 0 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.h-hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.h-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #00a896;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.h-hero-tag::before,
+.h-hero-tag::after {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: #00a896;
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.h-hero-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    color: #0d2744;
+    margin-bottom: 8px;
+}
+
+.h-hero-subtitle {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #64748b;
+    line-height: 1.55;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   Breadcrumb Harmony — Consistent Navigation
+   ============================================================ */
+
+.h-breadcrumb-section {
+    position: sticky;
+    top: 101px; /* Navbar height */
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.85); /* Slightly more opaque for better legibility */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(232, 237, 244, 0.4);
+    padding: 12px 0;
+    font-size: 0.82rem;
+    color: #64748b;
+    transition: var(--h-transition);
+}
+
+.h-breadcrumb-section:hover {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.h-breadcrumb-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.h-breadcrumb-section a {
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.h-breadcrumb-section a:hover {
+    color: #00a896;
+}
+
+.h-breadcrumb-section span {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.h-breadcrumb-sep {
+    margin: 0 10px;
+    color: #cbd5e1;
+    font-weight: 400;
+}
+
+@media (max-width: 900px) {
+    .h-hero-section {
+        padding: 40px 0 24px;
+    }
+    .h-hero-title {
+        font-size: 1.75rem;
+    }
+    .h-breadcrumb-container {
+        padding: 0 20px;
+    }
+}

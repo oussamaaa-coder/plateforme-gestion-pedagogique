@@ -1,0 +1,77 @@
+/**
+ * admin/components/layout/AdminLayout.module.css
+ * Premium Admin Shell — Deep Navy + Royal Blue
+ */
+
+/* ─── Root Shell ─────────────────────────────────────────────────────────────── */
+.shell {
+  display:          flex;
+  min-height:       100vh;
+  background-color: var(--admin-bg-base);
+  color:            var(--admin-text-primary);
+  font-family:      var(--admin-font);
+  position:         relative;
+  overflow-x:       hidden;
+}
+
+/* ─── Sidebar Slot ───────────────────────────────────────────────────────────── */
+.sidebarSlot {
+  position:   fixed;
+  top:        0;
+  left:       0;
+  height:     100vh;
+  width:      var(--admin-sidebar-width);
+  z-index:    200;
+  transition: transform var(--admin-spring);
+  will-change: transform;
+}
+
+/* ─── Main Content Area ──────────────────────────────────────────────────────── */
+.main {
+  flex:        1;
+  min-width:   0;
+  margin-left: var(--admin-sidebar-width);
+  display:     flex;
+  flex-direction: column;
+  min-height:  100vh;
+  transition:  margin-left var(--admin-spring);
+}
+
+/* ─── Page Wrapper ───────────────────────────────────────────────────────────── */
+.pageWrapper {
+  flex:    1;
+  padding: var(--admin-space-6) var(--admin-space-8);
+  /* Subtle animated grid background */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
+}
+
+/* ─── Mobile Backdrop ────────────────────────────────────────────────────────── */
+.backdrop {
+  position:   fixed;
+  inset:      0;
+  z-index:    199;
+  background: rgba(2, 8, 23, 0.70);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+  .sidebarSlot {
+    transform: translateX(calc(-1 * var(--admin-sidebar-width)));
+  }
+  .sidebarSlot.open {
+    transform: translateX(0);
+  }
+  .main {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageWrapper {
+    padding: var(--admin-space-4);
+  }
+}
